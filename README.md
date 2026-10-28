@@ -31,19 +31,32 @@ Access is based on the Discord **Administrator** permission, or owning the serve
 
 1. Create an application in the [Discord Developer Portal](https://discord.com/developers/applications).
 2. Open **Bot** and copy the token. Turn on the privileged **Server Members Intent**.
-3. Open **OAuth2** and add this redirect: `http://localhost:3000/auth/callback`
-4. Copy the application id and client secret.
-5. Copy `.env.example` to `.env` and fill it in. `SESSION_SECRET` should be a long random string.
-6. Install and start:
+3. Open **OAuth2** and copy the application id and client secret.
+4. Copy `.env.example` to `.env` and fill it in. `SESSION_SECRET` should be a long random string.
+5. Install and start:
 
 ```bash
 npm install
 npm start
 ```
 
-7. Open `http://localhost:3000`, sign in with Discord, and invite the bot from the panel.
-8. On every server, drag the GuildLink role above the roles it needs to assign. It also needs permission to ban members on the linked servers.
-9. Set up the one community from the main server, link the others, choose the main-server roles to sync, then tick what each role grants on each server. A role on a linked server can also be ticked so that having it grants the main-server role. A role that exists only on a linked server can sync too: choose it under "Sync from this server", then tick what it grants on the main server and on the other linked servers.
+6. On every server, drag the GuildLink role above the roles it needs to assign. It also needs permission to ban members on the linked servers.
+7. Set up the one community from the main server, link the others, choose the main-server roles to sync, then tick what each role grants on each server. A role on a linked server can also be ticked so that having it grants the main-server role. A role that exists only on a linked server can sync too: choose it under "Sync from this server", then tick what it grants on the main server and on the other linked servers.
+
+### Open the panel on this computer
+
+Leave `HOST=127.0.0.1`. Set `DISCORD_REDIRECT_URI` to `http://localhost:3000/auth/callback` and add that same URL under **OAuth2 → Redirects**. Open `http://localhost:3000`, sign in with Discord, and invite the bot from the panel.
+
+### Let other people open the panel
+
+Someone on another computer uses an https address that reaches this GuildLink. Discord login for that address uses https.
+
+- Set `PUBLIC_URL` to the address they open, such as `https://panel.example.com`. The bot gives people this address when it points them at the panel.
+- Set `DISCORD_REDIRECT_URI` to `https://panel.example.com/auth/callback`. Add that exact URL under **OAuth2 → Redirects**.
+- Keep `HOST=127.0.0.1`. Run a reverse proxy on this computer that accepts the https address and forwards it to `http://127.0.0.1:3000`. Set `TRUST_PROXY=1` so the login cookie is sent on that https address.
+- To accept connections on the GuildLink port from other computers, set `HOST=0.0.0.0` and open that port. People still sign in through the https `PUBLIC_URL`.
+
+Each person signs in with their own Discord account. An administrator of the main server can change the whole community. An administrator of a linked server can change that server. A signed-in person without Administrator on the main server or a linked server is told this install already has a community.
 
 The database is stored outside the project by default, under `%LOCALAPPDATA%\guildlink\guildlink.db`, so OneDrive does not lock it.
 
