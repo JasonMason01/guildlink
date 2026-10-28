@@ -27,6 +27,10 @@ Access is based on the Discord **Administrator** permission, or owning the serve
 - **Administrator on the main server** can change the community and every linked server. That includes which roles sync, the role map on each server, which servers are linked, optional categories for linked servers, which categories a main role links on, which server is used for ban appeals, which roles there may run `/guildlink unban`, and bans.
 - **Administrator on a linked server, but not the main server,** can change only the linked servers they administer. They can set which local roles a main-server role grants, which roles on their server grant a main-server role, which roles on their server grant roles on the main server, and which local role fills each required category slot. They can see the category and whether its requirements are met. They cannot change other servers, add or remove servers, choose which main-server roles exist, create or edit categories, choose a server's category, choose which categories a role links on, turn ban sync on or off, or turn the appeals unban command on or off.
 
+![A linked-server administrator on Blaine County Courts](docs/screenshots/linked-admin.png)
+
+Their panel lists the servers they administer. On one of those servers, they choose the Discord role for each GuildLink role.
+
 ## Setup
 
 1. Create an application in the [Discord Developer Portal](https://discord.com/developers/applications).
