@@ -10,6 +10,16 @@ The bot does not create Discord servers. Create the servers yourself, invite Gui
 
 The community home shows the name and settings. GuildLink roles live on the Roles page. Linked servers live on the Servers page. Categories live on the Categories page. Ban sync, the ban appeals server, and who may run `/guildlink unban` live on the Bans page. The audit log lives on the Audit page.
 
+![Linked servers in the panel](docs/screenshots/servers.png)
+
+![Role choices on Los Santos Police](docs/screenshots/police.png)
+
+Each linked server chooses the Discord role for a GuildLink role. A category can require roles, and other roles can be added on that server.
+
+![Ban sync and ban appeals](docs/screenshots/bans.png)
+
+Ban sync copies a main-server ban to the linked servers. The ban appeals server is where people can appeal, and chosen roles there can run `/guildlink unban`.
+
 ## Who can change what
 
 Access is based on the Discord **Administrator** permission, or owning the server. Manage Server on its own is not enough.
