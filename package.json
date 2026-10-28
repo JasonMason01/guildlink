@@ -1,0 +1,21 @@
+{
+  "name": "guildlink",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Discord bot and web panel that sync roles and bans from a main server to the other servers in a community.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test",
+    "preview": "node scripts/preview.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.10.0",
+    "discord.js": "^14.22.1",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2"
+  }
+}
